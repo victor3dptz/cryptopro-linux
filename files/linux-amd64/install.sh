@@ -80,6 +80,10 @@ ppc64)
   ARG=64
   arch=ppc64
   ;;
+ppc64le)
+  ARG=64
+  arch=ppc64le
+  ;;
 *)
   if test $is_deb_release -eq 1; then
     arch=i386
@@ -119,42 +123,42 @@ if test $is_deb_release -eq 1; then
     dpkg -i cprocsp-compat-debian_1.0.0-1_all.deb || check_fail $?
   fi
 
-  echo "Installing lsb-cprocsp-base_3.9.0-4_all.deb..."
-  dpkg -i lsb-cprocsp-base_3.9.0-4_all.deb || check_fail $?
+  echo "Installing lsb-cprocsp-base_4.0.0-4_all.deb..."
+  dpkg -i lsb-cprocsp-base_4.0.0-4_all.deb || check_fail $?
 else
-  echo "Installing lsb-cprocsp-base-3.9.0-4.noarch.rpm..."
+  echo "Installing lsb-cprocsp-base-4.0.0-4.noarch.rpm..."
   if test x$debian = x1; then
     if [ $isarm -eq 1 ]; then
       alien -kci cprocsp-compat-armhf-1.0.0-1.noarch.rpm || check_fail $?
     fi
-    alien -kci lsb-cprocsp-base-3.9.0-4.noarch.rpm || check_fail $?
+    alien -kci lsb-cprocsp-base-4.0.0-4.noarch.rpm || check_fail $?
   else
     if [ $isarm -eq 1 ]; then
       rpm -i cprocsp-compat-armhf-1.0.0-1.noarch.rpm || check_fail $?
     fi
-    rpm -i lsb-cprocsp-base-3.9.0-4.noarch.rpm || check_fail $?
+    rpm -i lsb-cprocsp-base-4.0.0-4.noarch.rpm || check_fail $?
   fi
 fi
 
 list="lsb-cprocsp-rdr lsb-cprocsp-capilite lsb-cprocsp-$enclosure cprocsp-curl"
 if test $is_deb_release -eq 1; then
   for i in $list; do
-    if test x$ARG = x64 && [ -e lsb-cprocsp-rdr-64_3.9.0-4_$arch.deb ]; then
+    if test x$ARG = x64 && [ -e lsb-cprocsp-rdr-64_4.0.0-4_$arch.deb ]; then
       i="${i}-64"
     fi
     echo "Installing $i..."
-    dpkg -i ${i}_3.9.0-4_$arch.deb || check_fail $?
+    dpkg -i ${i}_4.0.0-4_$arch.deb || check_fail $?
   done
 else
   for i in $list; do
-    if test x$ARG = x64 && [ -e lsb-cprocsp-rdr-64-3.9.0-4.$arch.rpm ]; then
+    if test x$ARG = x64 && [ -e lsb-cprocsp-rdr-64-4.0.0-4.$arch.rpm ]; then
       i="${i}-64"
     fi
     echo "Installing $i..."
     if test x$debian = x1; then
-      alien -kci $i-3.9.0-4.$arch.rpm || check_fail $?
+      alien -kci $i-4.0.0-4.$arch.rpm || check_fail $?
     else
-      rpm -i $i-3.9.0-4.$arch.rpm || check_fail $?
+      rpm -i $i-4.0.0-4.$arch.rpm || check_fail $?
     fi
   done
 fi

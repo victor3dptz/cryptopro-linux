@@ -61,10 +61,10 @@ ppc64le)
   ;;
 esac
 
-version=3.9.0-4
+version=4.0.0-4
 tmpFile=`mktemp /tmp/XXXXXXXX`
 
-packages_correct_list="lsb-cprocsp-base lsb-cprocsp-rdr lsb-cprocsp-capilite lsb-cprocsp-kc1 lsb-cprocsp-kc2 cprocsp-curl cprocsp-cpopenssl-base cprocsp-cpopenssl cprocsp-cpopenssl-gost cprocsp-rdr-gui-gtk cprocsp-rsa cprocsp-stunnel cprocsp-rdr-pcsc cprocsp-rdr-emv cprocsp-rdr-esmart cprocsp-rdr-inpaspot cprocsp-rdr-mskey cprocsp-rdr-novacard cprocsp-rdr-rutoken cprocsp-rdr-rutoken-fkc"
+packages_correct_list="lsb-cprocsp-base lsb-cprocsp-rdr lsb-cprocsp-capilite lsb-cprocsp-kc1 lsb-cprocsp-kc2 cprocsp-curl cprocsp-cpopenssl-base cprocsp-cpopenssl cprocsp-cpopenssl-gost cprocsp-rdr-gui-gtk cprocsp-rsa cprocsp-stunnel cprocsp-rdr-pcsc cprocsp-rdr-emv cprocsp-rdr-esmart cprocsp-rdr-etokgost-fkc cprocsp-rdr-gemfkc cprocsp-rdr-inpaspot cprocsp-rdr-mskey cprocsp-rdr-novacard cprocsp-rdr-rutoken cprocsp-rdr-rutoken-fkc"
 
 get_user_base_csp_choice(){
       base_csp_choice=$(whiptail --title "Select CSP packages" --checklist \
@@ -94,6 +94,8 @@ get_user_rdr_choice(){
   "Choose user's permissions" 35 85 26 \
   "cprocsp-rdr-emv" "EMV/Gemalto support module" OFF \
   "cprocsp-rdr-esmart" "Esmart support module" OFF \
+  "cprocsp-rdr-etokgost-fkc" "Aladdin Etoken GOST support module" OFF \
+  "cprocsp-rdr-gemfkc" "Gemalto FKC support module" OFF \
   "cprocsp-rdr-inpaspot" "Inpaspot support module" OFF \
   "cprocsp-rdr-mskey" "Mskey support module" OFF \
   "cprocsp-rdr-novacard" "Novacard support module" OFF \
